@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 8% 8%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 8% 8%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 6% 14%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 6% 14%;
+  --muted-foreground: 240 5% 70%;
+  --accent: 240 6% 18%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 6% 20%;
+  --input: 240 6% 20%;
+  --ring: 221 83% 53%;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Custom components */
+.trading-card {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(240, 8%, 10%) 100%);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trading-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.price-up {
+  color: hsl(160, 100%, 36%);
+}
+
+.price-down {
+  color: hsl(0, 100%, 67%);
+}
+
+.chart-container {
+  background: hsl(var(--card) / 0.8);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Wallet-specific styles */
+.wallet-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease;
+}
+
+.wallet-container:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.6);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Animation for price changes */
+@keyframes pulseGreen {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(0, 255, 127, 0.15); }
+}
+
+@keyframes pulseRed {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(255, 99, 99, 0.15); }
+}
+
+.price-up-animate {
+  animation: pulseGreen 1.2s ease-in-out;
+}
+
+.price-down-animate {
+  animation: pulseRed 1.2s ease-in-out;
+}
+
+/* Loading shimmer effect */
+.shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.18) 50%, 
+    rgba(255, 255, 255, 0.08) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(221, 83%, 48%) 100%);
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, hsl(221, 83%, 48%) 0%, hsl(221, 83%, 43%) 100%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: hsl(var(--secondary) / 0.8);
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border) / 0.5);
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--border));
+  transform: translateY(-2px);
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
