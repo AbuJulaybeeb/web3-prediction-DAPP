@@ -5,7 +5,7 @@ interface WalletContextType {
   address: string | undefined;
   isConnected: boolean;
   connectWallet: () => void;
-  disconnectWallet: () => void;
+  disconnect: () => void;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -22,7 +22,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <WalletContext.Provider value={{ address, isConnected, connectWallet, disconnectWallet }}>
+    <WalletContext.Provider value={{ address, isConnected, connectWallet, disconnect }}>
       {children}
     </WalletContext.Provider>
   );
