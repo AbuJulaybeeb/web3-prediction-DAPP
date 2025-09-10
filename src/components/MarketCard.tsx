@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { useWallet } from "./WalletConnect";
+import { useWallet } from "../walletcontext";
 
 export interface Market {
   id: number;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { useWallet } from "./WalletConnect"; // Ensure this import is correct
+import { useWallet } from "../walletcontext";
 
 interface ChartData {
   time: string;
