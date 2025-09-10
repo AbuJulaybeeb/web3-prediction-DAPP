@@ -17,15 +17,15 @@ const Home = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-28 pb-24">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5" />
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent tracking-tight animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent tracking-tight">
             Predict Crypto Markets
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed font-light">
             The next-generation prediction market platform on BlockDag Network. 
             Forecast cryptocurrency prices with precision and earn rewards for accurate predictions.
           </p>
@@ -33,7 +33,7 @@ const Home = () => {
             <Link to="/markets">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                className="btn-primary"
               >
                 Explore Markets
               </Button>
@@ -42,7 +42,7 @@ const Home = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-blue-400/50 text-blue-200 hover:bg-blue-500/20 hover:text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                className="btn-secondary"
               >
                 Start Predicting
               </Button>
@@ -58,12 +58,12 @@ const Home = () => {
             {stats.map((stat, index) => (
               <div 
                 key={index}
-                className="group trading-card p-8 text-center bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700/50"
+                className="group trading-card p-8 text-center"
               >
-                <div className="text-4xl font-extrabold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                <div className="text-4xl font-extrabold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-300 group-hover:text-white">{stat.label}</div>
+                <div className="text-sm text-muted-foreground group-hover:text-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -74,8 +74,8 @@ const Home = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Featured Markets</h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">Featured Markets</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-light">
               Explore the most popular prediction markets and start forecasting price movements
             </p>
           </div>
@@ -92,7 +92,7 @@ const Home = () => {
             <Link to="/markets">
               <Button 
                 variant="outline" 
-                className="border-blue-400/50 text-blue-200 hover:bg-blue-500/20 hover:text-white px-8 py-3 text-lg font-semibold rounded-xl shadow-lg"
+                className="btn-secondary"
               >
                 View All Markets
               </Button>
