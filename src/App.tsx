@@ -1,12 +1,18 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { mainnet } from "viem/chains";
 import { walletConnect } from "@wagmi/connectors";
 import { WalletProvider } from "./walletcontext";
 import Header from "./components/Header";
-import PredictionChart from "./components/PredictionChart";
-import MarketCard from "./components/MarketCard";
+import Home from "./pages/Home";
+import Markets from "./pages/MarketsPage";
+import Predictions from "./pages/Predictions";
+import Profile from "./pages/Profile";
+
+// Configure React Query
+const queryClient = new QueryClient();
 
 // Configure wagmi with WalletConnect
 const projectId = "YOUR_WALLETCONNECT_PROJECT_ID"; // Replace with your WalletConnect project ID
@@ -22,28 +28,25 @@ const config = createConfig({
 
 function App() {
   return (
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <WagmiProvider config={config}>
         <WalletProvider>
-          <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-            <Header />
-            <main className="container mx-auto py-8">
-              {/* Example usage of components */}
-              <PredictionChart selectedProduct="BTC" timeframe="1hr" />
-              <MarketCard market={{
-                id: 1,
-                name: "Bitcoin",
-                symbol: "BTC",
-                description: "Cryptocurrency",
-                currentPrice: 50000,
-                change: 2.5,
-                volume: "1.2M",
-              }} />
-            </main>
-          </div>
+          <BrowserRouter>
+            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
+              <Header />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/markets" element={<Markets />} />
+                  <Route path="/predictions" element={<Predictions />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
         </WalletProvider>
       </WagmiProvider>
-    </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
