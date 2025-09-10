@@ -1,6 +1,6 @@
 import React from "react";
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { mainnet } from "viem/chains";
 import { walletConnect } from "@wagmi/connectors";
 import { WalletProvider } from "./walletcontext";
 import Header from "./components/Header";
