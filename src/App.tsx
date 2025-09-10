@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { mainnet } from "viem/chains";
 import { walletConnect } from "@wagmi/connectors";
@@ -21,26 +22,28 @@ const config = createConfig({
 
 function App() {
   return (
-    <WagmiProvider config={config}>
-      <WalletProvider>
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-          <Header />
-          <main className="container mx-auto py-8">
-            {/* Example usage of components */}
-            <PredictionChart selectedProduct="BTC" timeframe="1hr" />
-            <MarketCard market={{
-              id: 1,
-              name: "Bitcoin",
-              symbol: "BTC",
-              description: "Cryptocurrency",
-              currentPrice: 50000,
-              change: 2.5,
-              volume: "1.2M",
-            }} />
-          </main>
-        </div>
-      </WalletProvider>
-    </WagmiProvider>
+    <BrowserRouter>
+      <WagmiProvider config={config}>
+        <WalletProvider>
+          <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+            <Header />
+            <main className="container mx-auto py-8">
+              {/* Example usage of components */}
+              <PredictionChart selectedProduct="BTC" timeframe="1hr" />
+              <MarketCard market={{
+                id: 1,
+                name: "Bitcoin",
+                symbol: "BTC",
+                description: "Cryptocurrency",
+                currentPrice: 50000,
+                change: 2.5,
+                volume: "1.2M",
+              }} />
+            </main>
+          </div>
+        </WalletProvider>
+      </WagmiProvider>
+    </BrowserRouter>
   );
 }
 

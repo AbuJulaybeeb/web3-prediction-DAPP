@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { useWallet } from "./WalletConnect";
+import { useWallet } from "../walletcontext";
 
 const Header = () => {
   const location = useLocation();
-  const { address, isConnected, connectWallet, disconnectWallet } = useWallet();
+  const { address, isConnected, connectWallet, disconnect } = useWallet();
 
   const navItems = [
     { name: "Dashboard", path: "/", icon: "📊" },
@@ -58,7 +58,7 @@ const Header = () => {
                   {address ? `${address.slice(0, 6)}...${address.slice(-4)}` : ""}
                 </span>
                 <button
-                  onClick={disconnectWallet}
+                  onClick={disconnect}
                   className="bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs font-semibold hover:bg-red-500/30 transition-all duration-200"
                 >
                   Disconnect
